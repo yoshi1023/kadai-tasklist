@@ -3,9 +3,17 @@
         @foreach ($errors->all() as $error)
             <!--<li>{{ $error }}</li>-->
             @if ($error == 'The content field is required.')
-                <li>
-                    {{ '文字が入力されていません' }} 
-                </li>
+                <p>
+                    {{ 'タスクが入力されていません' }} 
+                </p>
+            @elseif ($error == 'The status field is required.')
+                <p>
+                    {{ 'ステータスが入力されていません' }} 
+                </p>
+            @else
+                <p>
+                    {{ 'エラー' }} 
+                </p>
             @endif
         @endforeach
     </ul>

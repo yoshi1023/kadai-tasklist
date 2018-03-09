@@ -48,9 +48,11 @@ class TasksController extends Controller
     {
         $this->validate($request, [
             'content' => 'required', //空文字を禁止
+            'status' => 'required', //空文字を禁止
         ]);
         
         $task = new Task();
+        $task->status = $request->status;
         $task->content = $request->content;
         $task->save();
         
@@ -98,9 +100,11 @@ class TasksController extends Controller
     {
         $this->validate($request, [
             'content' => 'required', //空文字を禁止
+            'status' => 'required', //空文字を禁止
         ]);
         
         $task = Task::find($id);
+        $task->status = $request->status;
         $task->content = $request->content;
         $task->save();
         

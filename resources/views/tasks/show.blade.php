@@ -4,7 +4,7 @@
 
     <h1>id = {{ $task->id }} 詳細ページ</h1>
     
-    <p>{{ $task->content }}</p>
+    <p>{{ $task->content }} : {{ $task->status }}</p>
     
     {!! link_to_route('tasks.edit', '編集', ['id' => $task->id]) !!}
     
