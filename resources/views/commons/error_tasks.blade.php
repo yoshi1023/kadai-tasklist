@@ -4,15 +4,17 @@
             <!--<li>{{ $error }}</li>-->
             @if ($error == 'The content field is required.')
                 <p>
-                    {{ 'タスクが入力されていません' }} 
+                    <div class="alert alert-danger" role="alert">{{ 'タスクが入力されていません' }} </div>
+                    <!--{{ 'タスクが入力されていません' }} -->
                 </p>
             @elseif ($error == 'The status field is required.')
                 <p>
-                    {{ 'ステータスが入力されていません' }} 
+                    <div class="alert alert-danger" role="alert">{{ 'ステータスが入力されていません' }}  </div>
+                    <!--{{ 'ステータスが入力されていません' }} -->
                 </p>
             @else
                 <p>
-                    {{ 'エラー' }} 
+                    <div class="alert alert-danger" role="alert">{{ 'エラー' }}  </div>
                 </p>
             @endif
         @endforeach
