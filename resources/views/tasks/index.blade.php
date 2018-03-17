@@ -36,4 +36,7 @@
             
         <!--@endif-->
         {!! link_to_route('tasks.create', '新規作成ページ', null, ['class' => 'btn btn-primary']) !!}
+        
+        <!--//ユーザー登録ボタン-->
+        {!! link_to_route('signup.get', 'ユーザー登録', null, ['class' => 'btn btn-primary']) !!}
 @endsection
