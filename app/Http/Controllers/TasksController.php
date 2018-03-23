@@ -47,14 +47,19 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'content' => 'required', //空文字を禁止
+            'content' => 'required|max:255', //空文字を禁止
             'status' => 'required', //空文字を禁止
         ]);
         
-        $task = new Task();
-        $task->status = $request->status;
-        $task->content = $request->content;
-        $task->save();
+        $request->user()->tasks()->create([
+            'content' => $request->content,
+            'status' => $request->status
+        ]);
+        
+        // $task = new Task();
+        // $task->status = $request->status;
+        // $task->content = $request->content;
+        // $task->save();
         
         return redirect('/');
     }
@@ -68,7 +73,9 @@ class TasksController extends Controller
     public function show($id)
     {
         $task = Task::find($id);
-    
+        if (\Auth::user()->id !== $task->user_id){
+            return redirect('/');
+        }
         return view ('tasks.show', [
             'task' => $task,
         ]);
@@ -83,7 +90,9 @@ class TasksController extends Controller
     public function edit($id)
     {
         $task = Task::find($id);
-
+        if (\Auth::user()->id !== $task->user_id){
+            return redirect('/');
+        }
         return view('tasks.edit', [
             'task' => $task,
         ]);
@@ -103,10 +112,13 @@ class TasksController extends Controller
             'status' => 'required', //空文字を禁止
         ]);
         
+        
         $task = Task::find($id);
-        $task->status = $request->status;
-        $task->content = $request->content;
-        $task->save();
+        if (\Auth::user()->id === $task->user_id){
+            $task->status = $request->status;
+            $task->content = $request->content;
+            $task->save();
+        }
         
         return redirect('/');
     }
@@ -118,10 +130,12 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
         $task = Task::find($id);
+        if (\Auth::user()->id === $task->user_id) {
+        
         $task->delete();
-
+        }
         return redirect('/');
     }
 }

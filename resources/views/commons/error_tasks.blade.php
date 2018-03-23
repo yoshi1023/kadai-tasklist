@@ -14,7 +14,7 @@
                 </p>
             @else
                 <p>
-                    <div class="alert alert-danger" role="alert">{{ 'エラー' }}  </div>
+                    <div class="alert alert-danger" role="alert">{{ $error }}  </div>
                 </p>
             @endif
         @endforeach

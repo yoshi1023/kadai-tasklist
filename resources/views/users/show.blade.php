@@ -14,7 +14,7 @@
         </aside>
         <div class="col-xs-8">
             <ul class="nav nav-tabs nav-justified">
-                <li><a href="#">タスク</a></li>
+                <li><a href="#">microposts</a></li>
                 <li><a href="#">Followings</a></li>
                 <li><a href="#">Followers</a></li>
             </ul>

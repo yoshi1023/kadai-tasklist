@@ -23,17 +23,19 @@
                             <td>{{ $task->content }}</td>
                             <td>{{ $task->status }}</td>  
                             
+                            
                         </tr>
                     @endforeach  
                 </tbody>
                 
             </table>
             {!! link_to_route('tasks.create', 'タスクの作成', null, ['class' => 'btn btn-lg btn-primary']) !!}
+            
         @endif
     @else
         <div class="center jumbotron">
             <div class="text-center">
-                <h1>Welcome to the Microposts</h1>
+                <h1>タスクリスト</h1>
                 {!! link_to_route('signup.get', 'ユーザー登録', null, ['class' => 'btn btn-lg btn-primary']) !!}
                 {!! link_to_route('login.get', 'ログイン', null, ['class' => 'btn btn-lg btn-primary']) !!}
             </div>
